@@ -1,11 +1,10 @@
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/lib/auth"
+import { getSession } from "@/lib/session"
 import { redirect } from "next/navigation"
 import { organisationsApi } from "@/lib/api-client"
 import { EmailTemplateEditor } from "./email-template-editor"
 
 export default async function EmailTemplatePage() {
-  const session = await getServerSession(authOptions)
+  const session = await getSession()
   const user    = session?.user as any
   if (user?.role !== "ADMIN") redirect("/app")
 

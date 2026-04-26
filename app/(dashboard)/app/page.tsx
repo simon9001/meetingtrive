@@ -1,11 +1,10 @@
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/lib/auth"
+import { getSession } from "@/lib/session"
 import { meetingsApi, attendanceApi } from "@/lib/api-client"
 import Link from "next/link"
 import { format } from "date-fns"
 
 export default async function DashboardPage() {
-  const session = await getServerSession(authOptions)
+  const session = await getSession()
   const user = session?.user as any
   const userId = user?.id ?? ""
   const orgId = user?.orgId ?? ""

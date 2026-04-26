@@ -1,10 +1,9 @@
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/lib/auth"
+import { getSession } from "@/lib/session"
 import { meetingsApi } from "@/lib/api-client"
 import { RegisterClient } from "./register-client"
 
 export default async function RegisterPage() {
-  const session = await getServerSession(authOptions)
+  const session = await getSession()
   const user = session?.user as any
   const userId = user?.id ?? ""
   const orgId = user?.orgId ?? ""

@@ -1,5 +1,4 @@
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/lib/auth"
+import { getSession } from "@/lib/session"
 import { redirect } from "next/navigation"
 import Link from "next/link"
 import { OrgUsersPanel } from "./org-users-panel"
@@ -16,7 +15,7 @@ async function backendGet<T>(path: string): Promise<T> {
 }
 
 export default async function AdminDashboardPage() {
-  const session = await getServerSession(authOptions)
+  const session = await getSession()
   if (!session?.user) redirect("/sign-in")
 
   const user  = session.user as any

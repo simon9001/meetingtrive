@@ -1,11 +1,10 @@
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/lib/auth"
+import { getSession } from "@/lib/session"
 import { meetingsApi } from "@/lib/api-client"
 import Link from "next/link"
 import { MeetingsList } from "./meetings-list"
 
 export default async function MeetingsPage() {
-  const session = await getServerSession(authOptions)
+  const session = await getSession()
   const orgId = (session?.user as any)?.orgId ?? ""
   const { meetings } = await meetingsApi.list(orgId)
 

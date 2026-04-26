@@ -1,5 +1,4 @@
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/lib/auth"
+import { getSession } from "@/lib/session"
 import { meetingsApi } from "@/lib/api-client"
 import { notFound } from "next/navigation"
 import Link from "next/link"
@@ -14,7 +13,7 @@ export default async function MeetingDetailPage({
   params: Promise<{ meetingId: string }>
 }) {
   const { meetingId } = await params
-  await getServerSession(authOptions)
+  await getSession()
 
   let meeting
   try {

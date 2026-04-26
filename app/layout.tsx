@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${sora.variable} ${dmMono.variable} h-full`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col" style={{ fontFamily: "var(--font-sora), system-ui, sans-serif", background: "var(--s-bg)", color: "var(--s-text)" }}>
+      <body suppressHydrationWarning className="min-h-full flex flex-col" style={{ fontFamily: "var(--font-sora), system-ui, sans-serif", background: "var(--s-bg)", color: "var(--s-text)" }}>
         <Providers>{children}</Providers>
       </body>
     </html>

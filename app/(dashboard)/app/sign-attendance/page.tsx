@@ -1,10 +1,9 @@
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/lib/auth"
+import { getSession } from "@/lib/session"
 import { attendanceApi, staffApi } from "@/lib/api-client"
 import { SignAttendanceClient } from "./sign-attendance-client"
 
 export default async function SignAttendancePage() {
-  const session = await getServerSession(authOptions)
+  const session = await getSession()
   const userId = (session?.user as any)?.id ?? ""
   
   const { pending } = await attendanceApi.pending(userId)

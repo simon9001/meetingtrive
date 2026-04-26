@@ -1,5 +1,4 @@
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/lib/auth"
+import { getSession } from "@/lib/session"
 import { redirect } from "next/navigation"
 import { AiAssistant } from "@/components/ai-assistant/ai-assistant"
 import { SignOutButton } from "@/components/auth/sign-out-button"
@@ -7,7 +6,7 @@ import { NavLinks } from "./nav-links"
 import { TopBar } from "./topbar"
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession(authOptions)
+  const session = await getSession()
   if (!session?.user) redirect("/sign-in")
 
   const user        = session.user as any
