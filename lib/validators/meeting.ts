@@ -26,4 +26,4 @@ export const meetingSchema = z.object({
     .optional(),
 })
 
-export type MeetingFormValues = z.infer<typeof meetingSchema>
+export type MeetingFormValues = z.input<typeof meetingSchema>
