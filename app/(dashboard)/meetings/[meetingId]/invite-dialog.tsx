@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react"
 import { inviteApi } from "@/lib/api-client"
 import type { StaffRecord, InviteParticipant, MeetingDay } from "@/lib/api-client"
 
-const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000"
+import { BACKEND_URL } from "@/lib/config"
 
 interface Props {
   meetingId: string
@@ -50,7 +50,7 @@ function InviteDialog({ meetingId, orgId, isInternal, days, onClose }: Props & {
     setSearching(true)
     const t = setTimeout(async () => {
       try {
-        const res  = await fetch(`${BACKEND}/api/staff/lookup?orgId=${encodeURIComponent(orgId)}&q=${encodeURIComponent(query)}`)
+        const res  = await fetch(`${BACKEND_URL}/api/staff/lookup?orgId=${encodeURIComponent(orgId)}&q=${encodeURIComponent(query)}`)
         const data = await res.json()
         setResults(data.results ?? [])
         setShowDrop(true)

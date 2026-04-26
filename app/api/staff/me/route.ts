@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth"
 
-const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000"
+import { BACKEND_URL } from "@/lib/config"
 const API_KEY = process.env.INTERNAL_API_KEY ?? ""
 
 export async function GET(req: NextRequest) {
@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
   const userId = req.nextUrl.searchParams.get("userId")
   if (!userId) return NextResponse.json({ error: "userId is required" }, { status: 400 })
 
-  const res = await fetch(`${BACKEND}/api/staff/me?userId=${userId}`, {
+  const res = await fetch(`${BACKEND_URL}/api/staff/me?userId=${userId}`, {
     method: "GET",
     headers: { "X-API-Key": API_KEY },
   })
@@ -30,7 +30,7 @@ export async function PUT(req: NextRequest) {
 
   const body = await req.json()
 
-  const res = await fetch(`${BACKEND}/api/staff/me?userId=${userId}`, {
+  const res = await fetch(`${BACKEND_URL}/api/staff/me?userId=${userId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json", "X-API-Key": API_KEY },
     body: JSON.stringify(body),

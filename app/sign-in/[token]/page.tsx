@@ -3,6 +3,7 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
 import { useParams } from "next/navigation"
+import { BACKEND_URL } from "@/lib/config"
 import { useSession } from "next-auth/react"
 import { SignatureCanvas } from "@/components/signature/signature-canvas"
 import { Button } from "@/components/ui/button"
@@ -111,8 +112,7 @@ export default function SignInPortalPage() {
   const extractSignatureFromPhoto = async (imageData: string) => {
     setExtractingPhoto(true)
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000"
-      const res = await fetch(`${backendUrl}/api/ai/signatures/extract`, {
+      const res = await fetch(`${BACKEND_URL}/api/ai/signatures/extract`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ image: imageData }),

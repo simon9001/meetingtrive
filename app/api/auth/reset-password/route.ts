@@ -1,4 +1,4 @@
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000"
+import { BACKEND_URL } from "@/lib/config"
 const API_KEY     = process.env.INTERNAL_API_KEY ?? ""
 
 export async function POST(req: Request) {

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation"
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000"
+import { BACKEND_URL } from "@/lib/config"
 
 export async function GET(
   request: Request,

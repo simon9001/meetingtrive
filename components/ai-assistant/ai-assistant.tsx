@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { useState } from "react"
+import { BACKEND_URL } from "@/lib/config"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -32,8 +33,7 @@ export function AiAssistant() {
     setIsLoading(true)
 
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000"
-      const res = await fetch(`${backendUrl}/api/ai/chat`, {
+      const res = await fetch(`${BACKEND_URL}/api/ai/chat`, {
         method: "POST",
         body: JSON.stringify({ messages: [...messages, userMsg] }),
         headers: { "Content-Type": "application/json" },

@@ -3,7 +3,7 @@ import { redirect } from "next/navigation"
 import Link from "next/link"
 import { OrgUsersPanel } from "./org-users-panel"
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000"
+import { BACKEND_URL } from "@/lib/config"
 const API_KEY     = process.env.INTERNAL_API_KEY ?? ""
 
 async function backendGet<T>(path: string): Promise<T> {
