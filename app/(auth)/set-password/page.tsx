@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { authApi } from "@/lib/api-client"
 import { Button } from "@/components/ui/button"
@@ -11,7 +11,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription }
 import { Loader2, ShieldCheck, AlertCircle, CheckCircle2, Lock } from "lucide-react"
 import { toast } from "sonner"
 
-export default function SetPasswordPage() {
+function SetPasswordContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const token = searchParams.get("token")
@@ -207,5 +207,19 @@ export default function SetPasswordPage() {
         </p>
       </div>
     </div>
+  )
+}
+
+export default function SetPasswordPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-[#F5F3EE]">
+        <div className="text-center space-y-4">
+          <div className="h-10 w-10 border-4 border-[#1E4A3D] border-t-transparent rounded-full animate-spin mx-auto" />
+        </div>
+      </div>
+    }>
+      <SetPasswordContent />
+    </Suspense>
   )
 }
