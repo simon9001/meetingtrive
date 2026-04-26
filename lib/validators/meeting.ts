@@ -4,17 +4,17 @@ export const meetingSchema = z.object({
   title: z.string().min(5, "Title must be at least 5 characters"),
   description: z.string().optional(),
   type: z.enum(["VIRTUAL", "PHYSICAL"]),
-  platform: z.enum(["TEAMS", "MEET", "ZOOM", "CUSTOM", "NONE"]).default("NONE"),
+  platform: z.enum(["TEAMS", "MEET", "ZOOM", "CUSTOM", "NONE"]),
   meetingLink: z.string().url("Invalid meeting link").optional().or(z.literal("")),
-  sessionType: z.enum(["SINGLE", "MULTI_DAY"]).default("SINGLE"),
+  sessionType: z.enum(["SINGLE", "MULTI_DAY"]),
   startDatetime: z.date(),
   endDatetime: z.date(),
   venueName: z.string().optional(),
   venueLat: z.number().optional(),
   venueLng: z.number().optional(),
-  geoFenceRadiusM: z.number().default(100),
-  attendanceThresholdMinutes: z.number().default(15),
-  staffIdGateEnabled: z.boolean().default(false),
+  geoFenceRadiusM: z.number(),
+  attendanceThresholdMinutes: z.number(),
+  staffIdGateEnabled: z.boolean(),
   days: z
     .array(
       z.object({

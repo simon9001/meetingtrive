@@ -425,7 +425,7 @@ export default function SignInPortalPage() {
               )}
 
               <Button
-                onClick={handleSubmit}
+                onClick={() => handleSubmit()}
                 disabled={isLoading}
                 size="lg"
                 className="w-full h-12 rounded-xl font-bold shadow-lg shadow-primary/20"
