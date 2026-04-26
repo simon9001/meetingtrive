@@ -1,0 +1,6 @@
+[build]
+  command = "pnpm run build"
+  publish = ".next"
+
+[build.environment]
+  NEXT_PUBLIC_BACKEND_URL = "https://45a3-41-90-172-95.ngrok-free.app"
