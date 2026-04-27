@@ -9,14 +9,22 @@ const sections = [
   {
     label: "Main",
     items: [
-      { href: "/app",      label: "Dashboard" },
-      { href: "/meetings", label: "My Meetings" },
+      { href: "/app",             label: "Dashboard" },
+      { href: "/meetings/create", label: "Schedule Meeting" },
+      { href: "/meetings",        label: "My Meetings" },
     ],
   },
   {
     label: "Attendance",
     items: [
-      { href: "/meetings/create", label: "Schedule Meeting" },
+      { href: "/app/sign-attendance", label: "Sign Attendance" },
+      { href: "/app/register",        label: "Download Register" },
+    ],
+  },
+  {
+    label: "Settings",
+    items: [
+      { href: "/app/profile", label: "My Profile" },
     ],
   },
 ]
